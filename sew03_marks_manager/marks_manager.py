@@ -6,29 +6,45 @@ grades = {}
 class Subject:
     def __init__(self, name):
         self.name = name
-        self.mark = {1,2,3}
+        self.mark = []
     def add_mark(self, mark):
-        self.mark.add(mark)
+        self.mark.append(mark)
     def __str__(self):
-        return f"Subject:\t {self.name} \nMark/s:\t\t {self.mark}\n"
+        return f"\nSubject:\t {self.name} \nMark/s:\t\t {self.mark}\n"
 
 user_input = input("Please input your choice: ")
+
+
+
 def add_subject():
     input_subject = input("Please input the subject: ")
     input_mark = input("Please input the mark: ")
 
     if input_subject not in grades:
+        print("Adding new subject...")
         subject = Subject(input_subject)
+        subject.add_mark(int(input_mark))
         grades[subject.name] = subject
-        subject.add_mark(input_mark)
     else:
-        grades[input_subject].add_mark(input_mark)
+        print("Subject already exists, adding mark...")
+        grades[input_subject].add_mark(int(input_mark))
+    
+    print(grades[input_subject])
+
+
 
 def remove_subject():
-    print("Removing subject...")
+    input_subject = input("Please input the subject: ")
+    if input_subject in grades:
+        print("Removing subject...")
+        del grades[input_subject]
+    else:
+        print("Subject does not exist, try looking up subjects.")
+
 
 def show_subjects():
-    print("Showing subjects...")
+    for value in grades.values():
+        print(value)
 
 def exit_program():
     print("Exiting program...")
@@ -49,4 +65,6 @@ def check_input(user_input):
         user_input = input("Please input your choice: ")
         check_input(user_input)
 
-check_input(user_input)
+while(True):
+    check_input(user_input)
+    user_input = input("Please input your choice: ")
