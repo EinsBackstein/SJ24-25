@@ -8,7 +8,8 @@ def check_input(user_input):
             print("Goodbye!")
             exit()
         elif (user_input == "1"):
-            ex1.is_prime()
+            check_prime = input("Please input a number: ")
+            print(ex1.is_prime(check_prime))
         elif (user_input == "2"):
             ex2.remove_vowels()
         elif (user_input == "3"):
