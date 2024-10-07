@@ -14,9 +14,11 @@ def check_input(user_input):
             remove_vowels = input("Please input a string: ")
             print(ex2.remove_vowels(remove_vowels))
         elif (user_input == "3"):
-            ex3.count_tokens()
+            count_tokens = input("Please input a string: ")
+            print(ex3.count_tokens(count_tokens))
         elif (user_input == "4"):
-            ex4.trimm()
+            input_trimm = input("Please input a string: ")  
+            print(ex4.trimm(input_trimm))
         else:
             print("Invalid input, please try again.")
             user_input = input("Please input your choice: ")
