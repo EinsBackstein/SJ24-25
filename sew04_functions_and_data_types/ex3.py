@@ -7,3 +7,7 @@ def count_tokens(s:str) -> dict:
         else:
             tokens[i] = 1
     return tokens
+
+if(__name__ == "__main__"):
+    count_token = input("Please input a string: ")
+    print(count_tokens(count_token))
