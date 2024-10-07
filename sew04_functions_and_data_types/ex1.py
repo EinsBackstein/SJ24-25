@@ -1,4 +1,4 @@
-def is_prime(n):
+def is_prime(n: str | int) -> bool:
     if(n.isdigit() == False):
         exit('NaN')
     n = int(n)

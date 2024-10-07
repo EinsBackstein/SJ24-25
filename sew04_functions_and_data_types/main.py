@@ -11,7 +11,8 @@ def check_input(user_input):
             check_prime = input("Please input a number: ")
             print(ex1.is_prime(check_prime))
         elif (user_input == "2"):
-            ex2.remove_vowels()
+            remove_vowels = input("Please input a string: ")
+            print(ex2.remove_vowels(remove_vowels))
         elif (user_input == "3"):
             ex3.count_tokens()
         elif (user_input == "4"):

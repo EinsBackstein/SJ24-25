@@ -1,2 +1,2 @@
-def remove_vowels():
-    print("remove_vowels() called")
+def remove_vowels(s:str)->str:
+    return s.translate({ord(i): None for i in 'AEIOUaeiou'})
