@@ -1,13 +1,5 @@
 # Hier werden alle SEW-Aufgaben des Schuljahres 24/25 hochgeladen
 
-push-command:
-
-```bash
-
-git push github main && git push origin main
-
-```
-
 ---
 
 ## Inhaltsverzeichnis
