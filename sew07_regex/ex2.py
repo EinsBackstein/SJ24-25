@@ -1,7 +1,15 @@
 import re
 import requests
+import argparse
 
-url = 'https://www.htl-villach.at'
+parser = argparse.ArgumentParser(description='Extract URLs from a website')
+
+parser.add_argument('--url','-u',type=str, help='The URL to extract URLs from')
+
+args = parser.parse_args()
+
+url = args._get_kwargs()[0]
+url = url[1]
 
 # Sending a GET request to the URL and receive the response
 response = requests.get(url)
