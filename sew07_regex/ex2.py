@@ -4,7 +4,8 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Extract URLs from a website')
 
-parser.add_argument('--url','-u',type=str, help='The URL to extract URLs from')
+parser.add_argument('--url', '-u', type=str,
+                    help='The URL to extract URLs from')
 
 args = parser.parse_args()
 
@@ -22,11 +23,17 @@ else:
     print('Failed to download content. Status code:', response.status_code)
 
 
-
 def extract_urls(url):
-    
+    # https?://                    # Matches "http://" or "https://" | "s" is optional.
+    # (?:[-\w.]|(?:%[\da-fA-F]{2}))+
+    # (?: ... )                    # Non-capturing group for grouping without capturing.
+    # [-\w.]                       # Matches any character that is a hyphen, word character (letter, digit, underscore), or period.
+    # |                            # OR
+    # (?:%[\da-fA-F]{2})           # Another non-capturing group that matches URL-encoded characters, like "%20" (space).
+    # +                            # Ensures that the sequence repeats one or more times.
     urls = re.findall(r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', url)
     return urls
+
 
 def count_urls(url):
     list = []
@@ -36,6 +43,7 @@ def count_urls(url):
             list.append(url)
     print(len(list))
     print(list)
+
 
 if __name__ == "__main__":
     count_urls(response)
