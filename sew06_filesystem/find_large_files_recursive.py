@@ -22,6 +22,7 @@ sort = args._get_kwargs()[3]
 
 large_files = []
 
+
 def find_large_files_recursive(directory, min_size):
     for entry in os.scandir(directory):
         if entry.is_file() and entry.stat().st_size >= min_size:
