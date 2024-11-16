@@ -11,3 +11,4 @@
 - [sew05_file_IO](sew05_file_IO)
 - [sew06_filesystem](sew06_filesystem)
 - [sew07_regex](sew07_regex)
+- [sew08_oo_marks_manager](sew08_oo_marks_manager)
