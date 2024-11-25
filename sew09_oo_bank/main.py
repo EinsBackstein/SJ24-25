@@ -47,21 +47,46 @@ def main():
             if checks(None,None,balance) == False: continue
             if account_type == "checking":
                 fee = float(input("Enter fee (€): "))
-                if checks(None,None,None,None,fee) == False: continue
+                if checks(None,None,None,bank,fee) == False: continue
                 account = CheckingAccount(account_number, balance, fee)
             elif account_type == "saving":
                 interest_rate = float(input("Enter interest rate (%): "))
-                if checks(None,None,None,None,None,interest_rate) == False: continue
+                if checks(None,None,None,bank,None,interest_rate) == False: continue
                 account = SavingAccount(account_number, balance, interest_rate)
             bank.add_account(account)
         if choice == "2":
             account_number = input("Enter account number: ")
             account = bank.get_account(account_number)
-            if account == None:
+            if account is None:
                 print("Account not found")
             else:
                 print(account)
-
+        if choice == "3":
+            accounts = bank.get_accounts()
+            for account in accounts:
+                acc = bank.get_account(account)
+                print(acc)
+        if choice == "4":
+            bank.do_accounting()
+        if choice == "5":
+            account_number = input("Enter account number: ")
+            account = bank.get_account(account_number)
+            amount = float(input("Enter amount to deposit: "))
+            if account:
+                account.deposit(amount)
+            else:
+                print("Account not found")
+        if choice == "6":
+            account_number = input("Enter account number: ")
+            account = bank.get_account(account_number)
+            amount = float(input("Enter amount to withdraw: "))
+            if account:
+                account.withdraw(amount)
+            else:
+                print("Account not found")
+        if choice == "0":
+            print("Goodbye!")
+            exit()
 
 
 if __name__ == "__main__":

@@ -10,10 +10,14 @@ class Bank:
         self._accounts.append(account)
 
     def get_account(self, account_number: str):
+        acc = ""
         for account in self._accounts:
             if account.account_number == account_number:
-                return account
-        return None
+                acc = account
+                break
+            else:
+                acc = None
+        return acc
     
     def get_accounts(self):
         accounts = []
