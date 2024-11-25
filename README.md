@@ -13,3 +13,4 @@
 - [sew07_regex](sew07_regex)
 - [sew08_oo_marks_manager](sew08_oo_marks_manager)
 - [sew09_oo_bank](sew09_oo_bank)
+- [sew10_oo_home_power](sew10_oo_home_power)
