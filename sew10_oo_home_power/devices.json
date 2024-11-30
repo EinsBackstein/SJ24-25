@@ -1,0 +1,38 @@
+[
+  {
+    "device_id": 953,
+    "name": "too",
+    "power": -972,
+    "total_runing_time": 10,
+    "type": "ConsumingDevice"
+  },
+  {
+    "device_id": 492,
+    "name": "much",
+    "power": 367,
+    "total_runing_time": 10,
+    "type": "ProducingDevice",
+    "efficiency": 0.39
+  },
+  {
+    "device_id": 970,
+    "name": "manager",
+    "power": -543,
+    "total_runing_time": 10,
+    "type": "ConsumingDevice"
+  },
+  {
+    "device_id": 444,
+    "name": "blood",
+    "power": -294,
+    "total_runing_time": 10,
+    "type": "ConsumingDevice"
+  },
+  {
+    "device_id": 321,
+    "name": "computer",
+    "power": -344,
+    "total_runing_time": 10,
+    "type": "ConsumingDevice"
+  }
+]

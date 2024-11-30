@@ -1,0 +1,6 @@
+device_id,name,power,total_runing_time,type,efficiency
+953,too,-972,10,ConsumingDevice,
+492,much,367,10,ProducingDevice,0.39
+970,manager,-543,10,ConsumingDevice,
+444,blood,-294,10,ConsumingDevice,
+321,computer,-344,10,ConsumingDevice,
