@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>All People</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+      body {
+        font-family: 'Roboto', sans-serif !important;
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-900 text-white">
+    <h1 class="text-xl ml-4 pt-2">All People</h1>
+    <table class="ml-4" cellpadding="5px">
+      <thead class="p-4">
+        <td>Firstname</td>
+        <td>Lastname</td>
+        <td class="border-l border-grey-300" colspan="3">Actions</td>
+      </thead>
+      {% for person in people %} {# repeat for every person in people #}
+      <tr class="border-b border-t border-gray-300">
+        <td>{{ person.firstname }}</td>
+        <td>{{ person.lastname }}</td>
+        <td class="border-r border-l border-grey-300 hover:bg-gray-700"> 
+          <a href="{% url 'person_details_route' person.id %}">Show Details</a>
+        </td>
+        <td class="border-r border-l border-grey-300 hover:bg-gray-700"><a href="{% url 'person_edit_route' person.id %}">Edit</a></td>
+        <td class="border-r border-l border-grey-300 hover:bg-gray-700">
+          <form
+            method="post"
+            action="{% url 'person_delete_route' person.id %}"
+          >
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <br />
+    <div class="ml-4">
+      Number of People: {{ people.count }}
+    </div>
+    <button class="flex items-center justify-center px-4 py-2 mt-4 ml-4 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 ease-in-out">
+      <a href="{% url 'person_create_route' %}">Create a New Person</a>
+    </button>
+  </body>
+</html>
