@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>All People</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+      body {
+        font-family: 'Roboto', sans-serif !important;
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-900 text-white">
+    <h1 class="text-xl ml-4 pt-2">All People</h1>
+    <form method="post" action="">
+      {% csrf_token %}
+    <table class="ml-4" cellpadding="5px">
+      <thead class="p-4">
+        <td class="px-4">select</td>
+        <td class="border-l border-grey-300">Firstname</td>
+        <td>Lastname</td>
+      </thead>
+      {% for person in people %} {# repeat for every person in people #}
+      <tr class="border-b border-t border-gray-300">
+        <td class="flex items-center justify-center mt-1">
+          <input
+            class="form-check-input border-black"
+            type="radio"
+            name="selected_person"
+            value="{{ person.id }}"
+          />
+        </td>
+        <td class="border-l border-gray-300">{{ person.firstname }}</td>
+        <td>{{ person.lastname }}</td>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <br>
+    <div class="flex">
+      <button type="submit" name="details" class="dropdown-item flex items-center justify-center px-4 py-2 mt-4 ml-4 font-semibold text-white bg-red-500 rounded-lg shadow-md hover:bg-red-700 ease-in-out">Details</button>
+      <button type="submit" name="edit" class="dropdown-item flex items-center justify-center px-4 py-2 mt-4 ml-4 font-semibold text-white bg-red-500 rounded-lg shadow-md hover:bg-red-700 ease-in-out">Edit</button>
+      <button type="submit" name="delete" class="dropdown-item text-danger flex items-center justify-center px-4 py-2 mt-4 ml-4 font-semibold text-white bg-red-500 rounded-lg shadow-md hover:bg-red-700 ease-in-out">
+        Delete
+      </button>
+    </div>
+  </form>
+    <br />
+    <div class="ml-4">Number of People: {{ people.count }}</div>
+    <button
+      class="flex items-center justify-center px-4 py-2 mt-4 ml-4 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 ease-in-out"
+    >
+      <a href="{% url 'person_create_route' %}">Create a New Person</a>
+    </button>
+  </body>
+</html>
