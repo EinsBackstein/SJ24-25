@@ -16,4 +16,5 @@
 - [sew10_oo_home_power](sew10_oo_home_power)
 - [sew11_basic_django_app](sew11_basic_django_app)
 - [sew12_advanced_django_app_1](sew12_advanced_django_app_1)
+- [sew13_advanced_django_app_2](sew13_advanced_django_app_2)
 - [sew99_hello_django](sew99_hello_django)

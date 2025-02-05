@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+    body {
+      font-family: 'Roboto', sans-serif !important;
+    }
+  </style>
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body class="bg-gray-900">
+<h1 class="text-white text-xl ml-4">Edit Person Details:</h1>
+<form method="post" action="{% url 'person_update_route' person.id %}">
+    {% csrf_token %}
+    <p class="text-white py-1 ml-4">Id: {{ person.id }}</p>
+    <p class="text-white py-1 ml-4">Firstname: <input class="text-black" name="firstname" value="{{ person.firstname }}"/></p>
+    <p class="text-white py-1 ml-4">Lastname: <input class="text-black" name="lastname" value="{{ person.lastname }}"/></p>
+    <p class="text-white py-1 ml-4">Age: <input class="text-black" name="age" value="{{ person.age }}"/></p>
+    <p class="text-white py-1 ml-4">Sex:
+        <select  class="text-black" name="sex">
+            {% for key,value in person.SEX_CHOICES %}
+                <option value="{{ key }}" {% if person.sex == key %} selected {% endif %}>
+                    {{ value }}
+                </option>
+            {% endfor %}
+        </select>
+    </p>
+    <p class="flex flex-auto flex-col text-white py-1 ml-4">Description: <textarea class="text-black w-72" name="description" rows="5">{{ person.description }}</textarea></p>
+    <div class="flex">
+    <button class="flex items-center justify-center px-4 py-2 mt-4 ml-4 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 ease-in-out" type="submit">Save</button>
+    <button class="flex items-center justify-center px-4 py-2 mt-4 ml-4 font-semibold text-white bg-red-500 rounded-lg shadow-md hover:bg-red-700 ease-in-out"><a href="{% url 'person_index_route' %}">All People</a></button>
+  </div>
+</form>
+</body>
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+    body {
+      font-family: 'Roboto', sans-serif !important;
+    }
+  </style>
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body class="bg-gray-900">
+
+<h2 class="text-white text-xl ml-4 py-2">Create a new Person</h2>
+<form method="post" action="{% url 'person_store_route' %}">
+  {% csrf_token %}
+  <p class="ml-4 py-1">
+    <strong class="text-white">Firstname:</strong>
+    <input type="text" name="firstname" />
+  </p>
+  <p class="ml-4 py-1">
+    <strong class="text-white">Lastname</strong>
+    <input type="text" name="lastname" />
+  </p>
+  <p class="ml-4 py-1">
+    <strong class="text-white">Age:</strong>
+    <input type="text" name="age" />
+  </p>
+  <p class="ml-4 py-1">
+    <strong class="text-white">Sex:</strong>
+    <select name="sex">
+      <option value="M">Male</option>
+      <option value="F">Female</option>
+    </select>
+  </p>
+  <p class="ml-4 py-1">
+    <strong class="text-white flex flex-auto flex-col">Description:</strong>
+    <textarea name="description" rows="5"></textarea>
+  </p>
+  <p>
+    <button class="flex items-center justify-center px-4 py-2 mt-4 ml-4 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 ease-in-out" type="submit">Create</button>
+  </p>
+</form>
+</body>
+{% endblock content %}
