@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Person Details</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+      body {
+        font-family: 'Roboto', sans-serif !important;
+      }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-900 text-white">
+    <h1 class="text-xl ml-4 pt-4">Person Details:</h1>
+    <ul class="ml-8 list-disc">
+      <li>Id: {{ person.id }}</li>
+      <li>Firstname: {{ person.firstname }}</li>
+      <li>Lastname: {{ person.lastname }}</li>
+      <li>Age: {{ person.age }}</li>
+      <li>Sex: {{ person.get_sex_display }}</li>
+      {% if person.description %} {# optional #}
+      <li>Description: {{ person.description }}</li>
+      <img src="{{ person.get_thumbnail }}">
+      {% endif %}
+    </ul>
+    <!--a href="{{request.META.HTTP_REFERER}}">Go back</a-->
+    <button
+      class="flex items-center justify-center px-4 py-2 mt-4 ml-4 font-semibold text-white bg-red-500 rounded-lg shadow-md hover:bg-red-700 ease-in-out"
+    >
+      <a href="{% url 'person_index_route' %}"> Go back</a>
+    </button>
+  </body>
+</html>
+{% endblock content %}
