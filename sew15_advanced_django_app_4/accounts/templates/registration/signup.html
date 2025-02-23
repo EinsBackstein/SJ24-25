@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  form input[name="username"], form input[name="password1"], form input[name="password2"] {
+background-color: oklch(0.623 0.214 259.815);  /* Customize the color */
+color: white;
+padding: 8px;
+border-radius: 5px;
+margin-top: 4px;
+}
+</style>
+  <h2 class="text-2xl px-4 mt-2">Sign up</h2>
+  <form method="post" class="px-4 mt-2 py-1">
+    {% csrf_token %}
+      <p>
+        <label>Username:</label><br><input type="text" name="username"/>
+        <br>
+          <label>Password:</label><br><input type="password" name="password1"/>
+        <br>
+          <label>Retype Password:</label><br><input type="password" name="password2"/>
+      </p>
+    <div class="flex flex-row mt-2 gap-4 items-center align-center text-white">
+      <!-- Custom Input Styling -->
+      <button type="submit" class="flex items-center justify-center px-4 py-2  font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 ease-in-out">Sign Up</button>
+      <p>or</p>
+      <a href="{% url 'login' %}" class="flex items-center justify-center px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 ease-in-out">Login</a>
+    </div>
+
+      <br><br>
+      {%  for field in form %} {# show all errors after submit #}
+          {% if field.errors %}
+              <p style="color: red">{{ field.name }}: <br>
+              {% for error in field.errors %}
+                  - {{ error }} <br>
+              {% endfor %}
+              </p>
+              {%  endif %}
+      {% endfor %}
+  </form>
+{% endblock %}

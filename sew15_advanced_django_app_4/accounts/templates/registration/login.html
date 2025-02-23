@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    form input[name="username"], form input[name="password"] {
+  background-color: oklch(0.623 0.214 259.815);  /* Customize the color */
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 4px;
+}
+
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+  {% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="text-2xl px-4 mt-2">Login</h2>
+  <form method="post" class="px-4 mt-2 py-1">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="flex flex-row mt-2 gap-4 items-center align-center text-white">
+      <!-- Custom Input Styling -->
+      <button type="submit" class="flex items-center justify-center px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 ease-in-out">Login</button>
+      <p>or</p>
+      <a href="{% url 'signup' %}" class="flex items-center justify-center px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 ease-in-out">Sign Up</a>
+    </div>
+  </form>
+  
+{% endblock %}
+
+</body>
+</html>
