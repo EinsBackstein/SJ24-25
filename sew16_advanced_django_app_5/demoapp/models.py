@@ -61,4 +61,10 @@ class Person(models.Model):
             storage.delete(thumbnail_path)
         else:
             super().delete(*args, **kwargs)
+            
+    class Meta:
+        permissions = (
+            ("upload_picture", "Can upload and change person picture"),
+            ("assign_to_department", "Can assign person to department"),
+        )
 

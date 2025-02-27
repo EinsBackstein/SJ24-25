@@ -19,4 +19,5 @@
 - [sew13_advanced_django_app_2](sew13_advanced_django_app_2)
 - [sew14_advanced_django_app_3](sew14_advanced_django_app_3)
 - [sew15_advanced_django_app_4](sew15_advanced_django_app_4)
+- [sew16_advanced_django_app_5](sew16_advanced_django_app_5)
 - [sew99_hello_django](sew99_hello_django)
